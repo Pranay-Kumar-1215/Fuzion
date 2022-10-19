@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fuzion/widgets/keyboard.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import 'controllers/imgupload_controller.dart';
 
 class TextScreen extends StatelessWidget {
   const TextScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ImgUploadController imgUploadController = Get.put(ImgUploadController());
     return Scaffold(
       backgroundColor: Color(0xff1C1F2A),
       body: SingleChildScrollView(
@@ -97,12 +102,15 @@ class TextScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              width: 325.w,
-              height: 310.h,
-              decoration: BoxDecoration(
-                  color: Color(0xFF3D4354),
-                  borderRadius: BorderRadius.all(Radius.circular(16.sp))),
+            GestureDetector(
+              onTap: imgUploadController.pickimagefromgallery,
+              child: Container(
+                width: 325.w,
+                height: 310.h,
+                decoration: BoxDecoration(
+                    color: Color(0xFF3D4354),
+                    borderRadius: BorderRadius.all(Radius.circular(16.sp))),
+              ),
             ),
             SizedBox(
               height: 20.h,
@@ -141,102 +149,3 @@ class TextScreen extends StatelessWidget {
     );
   }
 }
-//
-// class _MessageTile extends StatelessWidget {
-//   const _MessageTile(
-//       {Key? key, required this.message, required this.messageData})
-//       : super(key: key);
-//
-//   final String message;
-//   final String messageData;
-//   static const _br = 26.0;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.symmetric(vertical: 4),
-//       child: Align(
-//         alignment: Alignment.centerLeft,
-//         child: Column(
-//           mainAxisSize: MainAxisSize.min,
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             Container(
-//               decoration: BoxDecoration(
-//                   color: Theme.of(context).cardColor,
-//                   borderRadius: BorderRadius.only(
-//                     topLeft: Radius.circular(_br),
-//                     topRight: Radius.circular(_br),
-//                     bottomRight: Radius.circular(_br),
-//                   )),
-//               child: Padding(
-//                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-//                 child: Text(message),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(top: 8.0),
-//               child: Text(
-//                 messageData,
-//                 style: TextStyle(
-//                   color: Colors.red,
-//                   fontSize: 10,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-//
-// class _MessageOwnTile extends StatelessWidget {
-//   const _MessageOwnTile(
-//       {Key? key, required this.message, required this.messageData})
-//       : super(key: key);
-//
-//   final String message;
-//   final String messageData;
-//   static const _br = 26.0;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: EdgeInsets.symmetric(vertical: 4),
-//       child: Align(
-//         alignment: Alignment.centerRight,
-//         child: Column(
-//           mainAxisSize: MainAxisSize.min,
-//           crossAxisAlignment: CrossAxisAlignment.end,
-//           children: [
-//             Container(
-//               height: 50.h,
-//               width: 249.w,
-//               decoration: const BoxDecoration(
-//                   color: Color(0xFF7169E2),
-//                   borderRadius: BorderRadius.only(
-//                     topLeft: Radius.circular(_br),
-//                     bottomRight: Radius.circular(_br),
-//                   )),
-//               child: Padding(
-//                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-//                 child: Text(message),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(top: 8.0),
-//               child: Text(
-//                 messageData,
-//                 style: const TextStyle(
-//                   color: Colors.red,
-//                   fontSize: 10,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
