@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:fuzion/widgets/keyboard.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -46,7 +47,7 @@ class TextScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 20.h,
+              height: 10.h,
             ),
             Padding(
               padding: EdgeInsets.all(18.sp),
@@ -102,15 +103,42 @@ class TextScreen extends StatelessWidget {
                 ),
               ),
             ),
-            GestureDetector(
-              onTap: imgUploadController.pickimagefromgallery,
-              child: Container(
-                width: 325.w,
-                height: 310.h,
-                decoration: BoxDecoration(
-                    color: Color(0xFF3D4354),
-                    borderRadius: BorderRadius.all(Radius.circular(16.sp))),
+            Container(
+              width: 325.w,
+              height: 310.h,
+              decoration: BoxDecoration(
+                color: Color(0xFF3D4354),
+                borderRadius: BorderRadius.all(Radius.circular(16.sp)),
               ),
+              child: GestureDetector(
+                child: Padding(
+                  padding: EdgeInsets.all(18.sp),
+                  child: MasonryGridView.count(
+                    itemCount: 4,
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 14,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 16.sp),
+                        width: 119.w,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFD9D9D9),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16.sp))),
+                        height: 120.h,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              "Tap to Load more",
+              style: TextStyle(color: Color(0xFFE0E0E0), fontSize: 12.sp),
             ),
             SizedBox(
               height: 20.h,

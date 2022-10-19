@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       builder: (context, a) {
         return const GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          home: TextScreen(),
         );
       },
     );
